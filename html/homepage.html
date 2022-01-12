@@ -29,14 +29,43 @@
                 <input type="password" class="input_form" name="password" id="input_form_password" placeholder="Enter a password" >
             </div>
             <div class="auth_button">
-                <button class="common_button log_in_btn">Log in</button>
+                <button class="common_button log_in_btn" id="login_btn">Log in</button>
             </div>
-
+            <div class="link_to_reg">No account? <a
+                    class="link_btn"
+                    id="signup_modal_btn"
+                    style="color: #EE950F; text-decoration: none;">Create one</a></div>
             <!-- Allow form submission with keyboard without duplicating the dialog button -->
             <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
         </form>
     </div>
+</div>
 
+<div id="signup_form">
+    <div class="log_in_header">
+        Sign up
+    </div>
+    <div class="auth_form">
+        <form>
+            <div class="input_block">
+                <label for="input_form_email" class="label_form">Email</label> <br>
+                <input type="text" class="input_form" name="email" id="input_form_email_su" placeholder="Enter an email">
+            </div>
+            <div class="input_block">
+                <label for="input_form_password" class="label_form">Password</label> <br>
+                <input type="password" class="input_form" name="password" id="input_form_password_su" placeholder="Enter a password" >
+            </div>
+            <div class="auth_button">
+                <button class="common_button log_in_btn" id="signup_btn">Sign up</button>
+            </div>
+            <div class="link_to_reg">Already have an account? <a
+                    class="link_btn"
+                    id="login_modal_btn"
+                    style="color: #EE950F; text-decoration: none;">Log in</a></div>
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </form>
+    </div>
 </div>
 
 <div class="homepage">
@@ -74,8 +103,8 @@
     <div class="login_part">
         <div class="container">
             <div class="authorization">
-                <button class="log_in">log in</button>
-                <button class="common_button sign_up">sign up</button>
+                <button class="log_in" id="homepage_log_in_btn">log in</button>
+                <button class="common_button sign_up" id="homepage_signup_btn">sign up</button>
             </div>
         </div>
     </div>
