@@ -1,0 +1,41 @@
+.left_bar {
+    height: 100vh;
+    width: 240px;
+    border-right: 1px solid #ECEFF2;
+}
+
+.logo_place {
+    margin-top: 34px;
+    margin-left: 34px;
+    margin-bottom: 150px;
+}
+
+.nav_bar {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.nav_link {
+    padding: 0 0 0 34px;
+    list-style-type: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+    color: rgba(62, 76, 89, 0.7);
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 32px;
+}
+
+.nav_link_name {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
