@@ -42,6 +42,7 @@ body {
     list-style-type: none;
     margin-right: 20px;
     color: rgba(62, 76, 89, 0.7);
+    cursor: pointer;
 }
 
 .logo_img {
@@ -129,12 +130,13 @@ body {
 }
 
 .log_in_header {
-    width: 120px;
+    width: 100%;
     margin: 30px auto;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 36px;
     line-height: 48px;
+    text-align: center;
 }
 
 .ui-widget-header.ui-dialog-titlebar {
@@ -161,7 +163,7 @@ body {
     margin-bottom: 18px;
 }
 
-#input_form_email, #input_form_password {
+#input_form_email, #input_form_password, #input_form_password_su, #input_form_email_su {
     width: 262px;
     padding: 18px;
     font-family: 'Inter', sans-serif;
@@ -174,15 +176,42 @@ body {
 }
 
 .auth_button {
-    width: 100px;
+    width: 100%;
     margin: auto;
 }
 
 .input_block {
     margin-bottom: 20px;
 }
-/*.ui-icon-closethick.ui-icon {*/
-/*    background-image: url("../assets/close.png");*/
-/*    opacity: 1.0;*/
-/*}*/
+
+.log_in_btn {
+    width: 100%;
+    padding: 24px 0;
+    margin: 20px auto;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.link_to_reg {
+    margin: 12px auto;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.link_btn {
+    cursor: pointer;
+}
+
+.ui-icon-closethick.ui-icon {
+    background-image: url("../assets/close.png");
+}
+
+.ui-icon-closethick {
+    background-position: -2.5px;
+}
 
