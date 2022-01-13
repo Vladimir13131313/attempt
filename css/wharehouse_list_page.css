@@ -1,6 +1,7 @@
+/* left bar */
 .left_bar {
     height: 100vh;
-    width: 240px;
+    width: 18%;
     border-right: 1px solid #ECEFF2;
 }
 
@@ -24,13 +25,14 @@ ul {
     padding: 0 0 0 34px;
     list-style-type: none;
     font-family: 'Inter', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
     line-height: 14px;
     color: rgba(62, 76, 89, 0.7);
     display: flex;
     flex-direction: row;
     margin-bottom: 32px;
+    cursor: pointer;
 }
 
 .nav_link_name {
@@ -38,4 +40,160 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+/* main content place */
+
+/* ----main bar---- */
+.main_content_space {
+    width: 82%;
+    height: 100%;
+}
+
+.main_bar {
+    width: 100%;
+    height: 15%;
+    border-bottom: 1px solid #ECEFF2;
+    min-height: 112px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#search_place {
+    margin: 32px auto auto 48px;
+    width: 300px;
+    height: 50px;
+    border: 1px solid #ECEFF2;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+}
+
+#search_icon {
+    margin: 16px 9px auto 16px;
+    cursor: pointer;
+}
+
+#search {
+    width: 259px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: #3E4C59;
+}
+
+#search:focus {
+    outline: none;
+}
+
+.setting_bar {
+    margin-top: 48px;
+    margin-right: 28px;
+}
+
+/* ----main container---- */
+.main_container {
+    height: 76.5%;
+    width: 90%;
+    padding: 72px 32px 0 48px;
+}
+
+.window_panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+h1 {
+    margin: 0;
+}
+
+.window_title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 36px;
+    color: #3E4C59;
+}
+
+.add_warehouse_btn {
+    margin-left: 24px;
+    padding: 16px 24px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+#sorted_by-button {
+    height: 28px;
+    width: 190px;
+    background-color: #ffffff;
+    border: 1px solid #E6E8EA;
+    padding-top: 16px;
+    padding-bottom: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.warehouses_list {
+    margin-top: 32px;
+    height: 88%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.warehouses_list::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F7F7F7;
+}
+
+.warehouses_list::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background-color: #D2D2D2;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    color: #3E4C59;
+}
+tr {
+    border-bottom: 1px solid #ECEFF2;
+}
+th:first-child {
+    width: 20px;
+    padding-right: 0;
+}
+td:first-child {
+    width: 20px;
+    padding-right: 0;
+}
+th, td {
+    font-weight: 400;
+    padding: 24px;
+    text-align: left;
+}
+
+.common_button:focus {
+    outline: none;
+}
+
+#login_header {
+    width: 370px;
+}
+
+.warehouse_pattern {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 26px;
 }

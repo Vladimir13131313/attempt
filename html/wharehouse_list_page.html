@@ -5,12 +5,14 @@
     <title>Speedline</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;500;600;700&display=swap" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/homepage.css">
     <link rel="stylesheet" type="text/css" href="../css/wharehouse_list_page.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+    <script src="../scripts/warehouse_list_page.js"></script>
 </head>
 <body>
 <div class="warehouse_page homepage">
@@ -71,6 +73,102 @@
             </ul>
         </div>
     </div>
+    <div class="main_content_space">
+        <div class="main_bar">
+            <form id="search_place">
+                <img src="../assets/Search.svg" alt="search_icon" id="search_icon">
+                <input type="text" placeholder="Search" id="search">
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+            </form>
+            <ul class="setting_bar">
+                <li class="top_bar_link">
+                    <img src="../assets/Profile.svg" alt="profile_icon">
+                </li>
+                <li class="top_bar_link">
+                    <img src="../assets/Setting.svg" alt="setting_icon">
+                </li>
+                <li class="top_bar_link">
+                    <img src="../assets/Notification.svg" alt="notification_icon">
+                </li>
+            </ul>
+        </div>
+        <div class="main_container">
+            <div class="window_panel">
+                <h1 class="window_title">Warehouses</h1>
+                <div>
+                    <select id="sorted_by">
+                        <option disabled selected>Filter by</option>
+                        <option>The first option</option>
+                        <option>The second option</option>
+                        <option>The last option</option>
+                    </select>
+                    <button
+                            class="common_button add_warehouse_btn"
+                            style="width: 190px"
+                            id="adding_button"
+                    >Add a warehouse + </button>
+                </div>
+            </div>
+            <div class="warehouses_list">
+                <table class="table" id="warehouse_table">
+                    <tr>
+                        <th><img src="../assets/Rectangle%201384.svg" alt="square"></th>
+                        <th>All stores</th>
+                        <th>Number of products</th>
+                        <th>Length, m</th>
+                        <th>Width, m</th>
+                        <th>Height, m</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div id="adding_a_warehouse">
+    <div class="log_in_header">
+        Adding a warehouse
+    </div>
+    <div class="auth_form">
+        <form>
+            <div class="input_block">
+                <label for="input_form_name" class="label_form">Name of warehouse</label> <br>
+                <input type="text" class="input_form" name="email" id="input_form_name" placeholder="Enter a name">
+            </div>
+            <div class="input_block">
+                <label for="input_form_length" class="label_form">Length, m</label> <br>
+                <input type="text" class="input_form" name="email" id="input_form_length" placeholder="Enter a name">
+            </div>
+            <div class="input_block">
+                <label for="input_form_width" class="label_form">Width, m</label> <br>
+                <input type="text" class="input_form" name="email" id="input_form_width" placeholder="Enter a name">
+            </div>
+            <div class="input_block">
+                <label for="input_form_height" class="label_form">Height, m</label> <br>
+                <input type="text" class="input_form" name="password" id="input_form_height" placeholder="Enter a password" >
+            </div>
+            <div class="auth_button">
+                <button class="common_button log_in_btn" id="add_btn">Add a warehouse</button>
+            </div>
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </form>
+    </div>
+</div>
+
+<div id="success">
+    <div class="warehouse_pattern">
+        <img src="../assets/Group%2036552.png" alt="warehouse_pattern">
+    </div>
+    <div class="log_in_header" id="login_header">
+        Warehouse successfully added
+    </div>
+    <div class="auth_form">
+        <div class="auth_button">
+            <button class="common_button log_in_btn" id="continue_btn">Continue</button>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
