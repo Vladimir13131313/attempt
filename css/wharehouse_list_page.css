@@ -197,3 +197,25 @@ th, td {
     justify-content: center;
     padding-bottom: 26px;
 }
+
+#sorted_by-menu {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.selected_link_bar {
+    color: #EE950F;
+    border-left: 2px solid #EE950F;
+    padding-left: 32px;
+}
+
+.change_color {
+    stroke: #EE950F;
+    stroke-opacity: 1.0;
+}
+
+.change_opacity {
+    opacity: 1.0;
+}
