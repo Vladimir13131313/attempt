@@ -174,6 +174,11 @@ $(() => {
 
         // localStorage.setItem(warehouse, JSON.stringify(list_of_warehouses));
 
+        warehouse_table.click(event => {
+            let obj = $(event.target)
+            console.log(obj.parent())
+        })
+
         adding_a_warehouse.dialog({
             autoOpen: false,
             width: 624,
