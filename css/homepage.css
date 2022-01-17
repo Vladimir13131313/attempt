@@ -145,7 +145,7 @@ body {
     padding: 0;
 }
 
-.ui-widget-overlay {
+.ui-widget-overlay.ui-front {
     background: rgba(0, 0, 0, 0.8);
     opacity: 1.0;
 }
@@ -163,7 +163,14 @@ body {
     margin-bottom: 18px;
 }
 
-#input_form_email, #input_form_password, #input_form_password_su, #input_form_email_su {
+#input_form_email,
+#input_form_password,
+#input_form_password_su,
+#input_form_email_su,
+#input_form_name,
+#input_form_height,
+#input_form_width,
+#input_form_length {
     width: 262px;
     padding: 18px;
     font-family: 'Inter', sans-serif;
@@ -207,11 +214,11 @@ body {
     cursor: pointer;
 }
 
-.ui-icon-closethick.ui-icon {
-    background-image: url("../assets/close.png");
-}
+/*.ui-icon-closethick.ui-icon {*/
+/*    background-image: url("../assets/close.png");*/
+/*}*/
 
-.ui-icon-closethick {
-    background-position: -2.5px;
-}
+/*.ui-icon-closethick {*/
+/*    background-position: -2.5px;*/
+/*}*/
 

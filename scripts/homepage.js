@@ -87,6 +87,7 @@ $(document).ready(function(){
                     console.log(true)
                     console.log(String(localStorage.getItem("email")));
                     console.log(String(localStorage.getItem("password")));
+                    window.location="../html/wharehouse_list_page.html";
                 } else {
                     log_password.addClass("ui-state-error");
                 }
@@ -100,9 +101,10 @@ $(document).ready(function(){
         if (User(sign_email, sign_password, sign_allFields)) {
             localStorage.setItem("email", sign_email.val());
             localStorage.setItem("password", sign_password.val());
-
             console.log(String(localStorage.getItem("email")));
             console.log(String(localStorage.getItem("password")));
+            open_login_form();
+            signup_form.dialog("close");
         }
     });
 });

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speedline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/homepage.css">
+    <link rel="stylesheet" type="text/css" href="../css/wharehouse_list_page.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+    <script defer src="../scripts/warehouse_page_conent.js"></script>
+
+</head>
+<body>
+<div class="warehouse_page homepage">
+    <div class="left_bar">
+        <div class="logo_place">
+            <img src="../assets/logo.png" alt="logo" class="logo_img">
+        </div>
+        <div class="nav_bar">
+            <ul>
+                <li class="nav_link" id="home_button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M9.15722 20.7714V17.7047C9.1572 16.9246 9.79312 16.2908 10.581 16.2856H13.4671C14.2587 16.2856 14.9005 16.9209 14.9005 17.7047V17.7047V20.7809C14.9003 21.4432 15.4343 21.9845 16.103 22H18.0271C19.9451 22 21.5 20.4607 21.5 18.5618V18.5618V9.83784C21.4898 9.09083 21.1355 8.38935 20.538 7.93303L13.9577 2.6853C12.8049 1.77157 11.1662 1.77157 10.0134 2.6853L3.46203 7.94256C2.86226 8.39702 2.50739 9.09967 2.5 9.84736V18.5618C2.5 20.4607 4.05488 22 5.97291 22H7.89696C8.58235 22 9.13797 21.4499 9.13797 20.7714V20.7714"
+                                stroke="#3E4C59"
+                                stroke-opacity="0.7"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"/>
+                    </svg>
+                    <div class="nav_link_name">
+                        <div>
+                            Home
+                        </div>
+                    </div>
+                </li>
+                <li class="nav_link" id="warehouses_button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.7">
+                            <path d="M15.7162 16.2234H8.49622" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15.7162 12.0369H8.49622" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11.2513 7.86011H8.49634" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M15.9086 2.74976C15.9086 2.74976 8.23161 2.75376 8.21961 2.75376C5.45961 2.77076 3.75061 4.58676 3.75061 7.35676V16.5528C3.75061 19.3368 5.47261 21.1598 8.25661 21.1598C8.25661 21.1598 15.9326 21.1568 15.9456 21.1568C18.7056 21.1398 20.4156 19.3228 20.4156 16.5528V7.35676C20.4156 4.57276 18.6926 2.74976 15.9086 2.74976Z"
+                                    stroke="#3E4C59"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                    <div class="nav_link_name">
+                        <div>
+                            Warehouses
+                        </div>
+                    </div>
+                </li>
+                <li class="nav_link" id="accounts_button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.7">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3 6.5C3 3.87479 3.02811 3 6.5 3C9.97189 3 10 3.87479 10 6.5C10 9.12521 10.0111 10 6.5 10C2.98893 10 3 9.12521 3 6.5Z" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M14 6.5C14 3.87479 14.0281 3 17.5 3C20.9719 3 21 3.87479 21 6.5C21 9.12521 21.0111 10 17.5 10C13.9889 10 14 9.12521 14 6.5Z" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3 17.5C3 14.8748 3.02811 14 6.5 14C9.97189 14 10 14.8748 10 17.5C10 20.1252 10.0111 21 6.5 21C2.98893 21 3 20.1252 3 17.5Z" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M14 17.5C14 14.8748 14.0281 14 17.5 14C20.9719 14 21 14.8748 21 17.5C21 20.1252 21.0111 21 17.5 21C13.9889 21 14 20.1252 14 17.5Z" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                    <div class="nav_link_name">
+                        <div>
+                            Accounts
+                        </div>
+                    </div>
+                </li>
+                <li class="nav_link" id="cards_button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.7">
+                            <path d="M7.37145 10.2017V17.0618" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12.0381 6.91919V17.0619" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16.6285 13.8269V17.0619" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.6857 2H7.31429C4.04762 2 2 4.31208 2 7.58516V16.4148C2 19.6879 4.0381 22 7.31429 22H16.6857C19.9619 22 22 19.6879 22 16.4148V7.58516C22 4.31208 19.9619 2 16.6857 2Z" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+                    <div class="nav_link_name">
+                        <div>
+                            Cards
+                        </div>
+                    </div>
+                </li>
+                <li class="nav_link" id="contacts_button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.7">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.59151 15.2068C13.2805 15.2068 16.4335 15.7658 16.4335 17.9988C16.4335 20.2318 13.3015 20.8068 9.59151 20.8068C5.90151 20.8068 2.74951 20.2528 2.74951 18.0188C2.74951 15.7848 5.88051 15.2068 9.59151 15.2068Z" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.59157 12.0198C7.16957 12.0198 5.20557 10.0568 5.20557 7.63476C5.20557 5.21276 7.16957 3.24976 9.59157 3.24976C12.0126 3.24976 13.9766 5.21276 13.9766 7.63476C13.9856 10.0478 12.0356 12.0108 9.62257 12.0198H9.59157Z" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16.4832 10.8815C18.0842 10.6565 19.3172 9.28253 19.3202 7.61953C19.3202 5.98053 18.1252 4.62053 16.5582 4.36353" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18.5955 14.7322C20.1465 14.9632 21.2295 15.5072 21.2295 16.6272C21.2295 17.3982 20.7195 17.8982 19.8955 18.2112" stroke="#3E4C59" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                    </svg>
+
+                    <div class="nav_link_name">
+                        <div>
+                            Contacts
+                        </div>
+                    </div>
+                </li>
+                <li class="nav_link" id="chat_button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.0714 19.0699C16.0152 22.1263 11.4898 22.7867 7.78642 21.074C7.23971 20.8539 6.79148 20.676 6.36537 20.676C5.17849 20.683 3.70117 21.8339 2.93336 21.067C2.16555 20.2991 3.31726 18.8206 3.31726 17.6266C3.31726 17.2004 3.14642 16.7602 2.92632 16.2124C1.21283 12.5096 1.87411 7.98269 4.93026 4.92721C8.8316 1.02443 15.17 1.02443 19.0714 4.9262C22.9797 8.83501 22.9727 15.1681 19.0714 19.0699Z" stroke="#3E4C59" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.9393 12.4131H15.9483" stroke="#3E4C59" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.9304 12.4131H11.9394" stroke="#3E4C59" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.9214 12.4131H7.9304" stroke="#3E4C59" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="nav_link_name">
+                        <div>
+                            Chat
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main_content_space">
+        <div class="main_bar">
+            <form id="search_place">
+                <img src="../assets/Search.svg" alt="search_icon" id="search_icon">
+                <input type="text" placeholder="Search" id="search">
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+            </form>
+            <ul class="setting_bar">
+                <li class="top_bar_link">
+                    <img src="../assets/Profile.svg" alt="profile_icon">
+                </li>
+                <li class="top_bar_link">
+                    <img src="../assets/Setting.svg" alt="setting_icon">
+                </li>
+                <li class="top_bar_link">
+                    <img src="../assets/Notification.svg" alt="notification_icon">
+                </li>
+            </ul>
+        </div>
+        <div class="main_container" id="main_container">
+
+        </div>
+    </div>
+</div>
+
+<div id="adding_a_warehouse">
+    <div class="log_in_header">
+        Adding a warehouse
+    </div>
+    <div class="auth_form">
+        <form>
+            <div class="input_block">
+                <label for="input_form_name" class="label_form">Name of warehouse</label> <br>
+                <input
+                        type="text"
+                        class="input_form"
+                        name="email"
+                        id="input_form_name"
+                        placeholder="Enter a name"
+                >
+            </div>
+            <div class="input_block">
+                <label for="input_form_length" class="label_form">Length, m</label> <br>
+                <input
+                        type="text"
+                        class="input_form"
+                        name="email"
+                        id="input_form_length"
+                        placeholder="Enter length">
+            </div>
+            <div class="input_block">
+                <label for="input_form_width" class="label_form">Width, m</label> <br>
+                <input
+                        type="text"
+                        class="input_form"
+                        name="email"
+                        id="input_form_width"
+                        placeholder="Enter width"
+                >
+            </div>
+            <div class="input_block">
+                <label for="input_form_height" class="label_form">Height, m</label> <br>
+                <input
+                        type="text"
+                        class="input_form"
+                        name="password"
+                        id="input_form_height"
+                        placeholder="Enter height"
+                >
+            </div>
+            <div class="auth_button">
+                <button class="common_button log_in_btn" id="add_btn">Add a warehouse</button>
+            </div>
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+        </form>
+    </div>
+</div>
+
+<div id="success">
+    <div class="warehouse_pattern">
+        <img src="../assets/Group%2036552.png" alt="warehouse_pattern">
+    </div>
+    <div class="log_in_header" id="login_header">
+        Warehouse successfully added
+    </div>
+    <div class="auth_form">
+        <div class="auth_button">
+            <button class="common_button log_in_btn" id="continue_btn">Continue</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
