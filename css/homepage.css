@@ -170,7 +170,10 @@ body {
 #input_form_name,
 #input_form_height,
 #input_form_width,
-#input_form_length {
+#input_form_length,
+#input_manufacturer,
+#input_product_name,
+#input_item_number {
     width: 262px;
     padding: 18px;
     font-family: 'Inter', sans-serif;

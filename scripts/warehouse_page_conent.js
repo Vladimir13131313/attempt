@@ -14,37 +14,14 @@ $(() => {
             .add(contacts_button)
             .add(chat_button);
 
+    const left_bar_buttons = (button, func) => {
+        button.click(function () {
+            selected_link($(this));
+            func($(this))
+        });
+    }
 
 
-    home_button.click(function () {
-        selected_link($(this));
-        add_home_content($(this));
-    });
-
-    warehouses_button.click(function () {
-        selected_link($(this));
-        add_wh_content($(this));
-    });
-
-    accounts_button.click(function () {
-        selected_link($(this));
-        add_account_content($(this))
-    });
-
-    cards_button.click(function () {
-        selected_link($(this));
-        add_card_content($(this));
-    });
-
-    contacts_button.click(function () {
-        selected_link($(this));
-        add_contact_content($(this));
-    });
-
-    chat_button.click(function () {
-        selected_link($(this));
-        add_chat_content($(this));
-    });
 
     const selected_link = (object) => {
         unselected_links();
@@ -64,7 +41,7 @@ $(() => {
     }
 
     const wh_content = (obj) => {
-        return common_content(obj,
+        return common_content(obj.children("div").children("div").text(),
             `
             <div>
                 <select id="sorted_by">
@@ -82,7 +59,6 @@ $(() => {
                 </select>
                 <button
                         class="common_button add_warehouse_btn"
-                        style="width: 190px"
                         id="adding_button"
                 >Add a warehouse + </button>
             </div>
@@ -103,13 +79,13 @@ $(() => {
     }
 
     const rest_content = (obj) => {
-        return common_content(obj, '', '')
+        return common_content(obj.children("div").children("div").text(), '', '')
     }
 
-    const common_content = (obj, name_line, all_conent) => {
+    const common_content = (name, name_line, all_conent) => {
       return `
             <div class="window_panel">
-                <h1 class="window_title">${obj.children("div").children("div").text()}</h1>
+                <h1 class="window_title">${name}</h1>
                 ${name_line}
             </div>
             ${all_conent}
@@ -152,6 +128,12 @@ $(() => {
         add_wh_content(warehouses_button);
     }
 
+    left_bar_buttons(home_button, add_home_content);
+    left_bar_buttons(warehouses_button, add_wh_content);
+    left_bar_buttons(accounts_button, add_account_content);
+    left_bar_buttons(cards_button, add_card_content);
+    left_bar_buttons(contacts_button, add_contact_content);
+    left_bar_buttons(chat_button, add_chat_content);
     start();
 
     // -------------------------------- WH logic ------------------------------------
@@ -175,9 +157,11 @@ $(() => {
         // localStorage.setItem(warehouse, JSON.stringify(list_of_warehouses));
 
         warehouse_table.click(event => {
-            let obj = $(event.target)
-            console.log(obj.parent())
-        })
+            let obj = $(event.target).parent();
+            page_container.empty();
+            page_container.append(one_warehouse_main($(obj.children()[1]).text()));
+            one_wh_logic();
+        });
 
         adding_a_warehouse.dialog({
             autoOpen: false,
@@ -235,6 +219,36 @@ $(() => {
                 sorting_array(data.item.value);
             }
         });
+
+        const one_warehouse_main = (name) => {
+            return `
+                <div class="window_panel">
+                    <h1 class="window_title">${name}</h1>
+                    <div>
+                        <select id="products_sort">
+                            <option class="sorter" disabled selected>Filter by</option>
+                            <option class="sorter" >Names</option>                         
+                        </select>
+                        <button
+                            class="common_button add_warehouse_btn"
+                            id="adding_cargo_button"
+                        >Add cargo + </button>
+                    </div>
+                </div>
+                <div class="warehouses_list">
+                <table class="table" id="products_table">
+                    <tr>
+                        <th><img src="../assets/Rectangle%201384.svg" alt="square"></th>
+                        <th>All products</th>
+                        <th>Manufacturer</th>
+                        <th>Item number</th>
+                        <th>Purchasing technology</th>
+                        <th>Shipment method</th>
+                    </tr>
+                </table>
+            </div>
+            `
+        }
 
         const open_adding_a_warehouse = () => {
             adding_a_warehouse.dialog("open");
@@ -408,16 +422,53 @@ $(() => {
                     break;
             }
         }
-        // update_storage({
-        //     name: "Warehouse No. 1",
-        //     quantity: 943,
-        //     len: 14,
-        //     wid: 24,
-        //     height: 4
-        // });
+
+        // ----------------------------- product list logic ----------------------------------------
+        function one_wh_logic() {
+            const products_sort = $("#products_sort"),
+                adding_cargo_button = $("#adding_cargo_button"),
+                adding_cargo_form = $("#adding_cargo_form"),
+                steps_cargo_adding = $("#steps_cargo_adding"),
+                first_step_btn = $("#first_step"),
+                form_header = $("#form_header");
 
 
-        // localStorage.clear();
+
+            products_sort.selectmenu();
+
+            steps_cargo_adding.tabs({
+                disabled: [1,2]
+            });
+
+            first_step_btn.click((event) => {
+                event.preventDefault();
+                get_to_next_step(1, 0, "Shipping method");
+            });
+
+            adding_cargo_button.click(() => {
+                adding_cargo_form.dialog("open");
+            });
+
+            adding_cargo_form.dialog({
+                autoOpen: false,
+                width: 624,
+                height: 806,
+                modal: true,
+                draggable: false,
+                resizable: false,
+                close: function() {
+                    get_to_next_step(0, 1, "Adding a product");
+                    steps_cargo_adding.tabs("disable", 2);
+                }
+            });
+
+            const get_to_next_step = (turn_on, turn_off, title) => {
+                steps_cargo_adding.tabs("enable", turn_on);
+                steps_cargo_adding.tabs("option", "active", turn_on);
+                steps_cargo_adding.tabs("disable", turn_off);
+                form_header.text(title);
+            }
+        }
 
         create_table(warehouse);
     }

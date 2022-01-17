@@ -128,13 +128,20 @@ h1 {
     line-height: 12px;
 }
 
-#sorted_by-button {
+#sorted_by-button, #products_sort-button {
     height: 28px;
     width: 190px;
     background-color: #ffffff;
     border: 1px solid #E6E8EA;
     padding-top: 16px;
     padding-bottom: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+#products_sort-menu {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 12px;
@@ -218,4 +225,79 @@ th, td {
 
 .change_opacity {
     opacity: 1.0;
+}
+
+#steps_cargo_adding {
+    border: none;
+}
+
+.ui-tabs .ui-tabs-nav {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#ui-id-3, #ui-id-4, #ui-id-5 {
+    cursor: pointer;
+    padding: 10px 12.6px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+    margin: 0;
+    padding: 0;
+}
+
+#first, #second, #third {
+    margin: 10px 8px 40px 8px;
+    padding: 0;
+    border: none;
+    border-radius: 16px;
+}
+
+.line {
+    width: 39px;
+}
+
+.line_between_tabs {
+    margin: 25.5px 0;
+    border-bottom: 1px solid #E6E8EA;
+}
+
+.ui-state-active a {
+    background: #EE950F;
+    border-radius: 16px;
+    border: none;
+}
+
+.radio_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.label_payment_method {
+    font-size: 16px;
+    line-height: 16px;
+    margin-bottom: 20px;
+}
+
+.payment_button {
+    background-color: transparent;
+    padding: 0;
+    margin: 12px auto;
+    border: none;
+    cursor: pointer;
 }
