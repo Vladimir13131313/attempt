@@ -430,6 +430,9 @@ $(() => {
                 adding_cargo_form = $("#adding_cargo_form"),
                 steps_cargo_adding = $("#steps_cargo_adding"),
                 first_step_btn = $("#first_step"),
+                shipment_by_plane_btn = $("#shipment_by_plane"),
+                shipment_by_sea = $("#shipment_by_sea"),
+                shipment_by_car = $("#shipment_by_car"),
                 form_header = $("#form_header");
 
 
