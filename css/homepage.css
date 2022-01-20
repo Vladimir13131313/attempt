@@ -1,9 +1,10 @@
 body {
     margin: 0;
+    height: 100vh;
 }
 .homepage {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     min-height: 500px;
     min-width: 1000px;
     display: flex;
@@ -131,7 +132,7 @@ body {
 
 .log_in_header {
     width: 100%;
-    margin: 30px auto;
+    margin: 29px auto;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 36px;
@@ -163,14 +164,8 @@ body {
     margin-bottom: 18px;
 }
 
-#input_form_email,
-#input_form_password,
-#input_form_password_su,
-#input_form_email_su,
-#input_form_name,
-#input_form_height,
-#input_form_width,
-#input_form_length {
+
+.modal_inputs {
     width: 262px;
     padding: 18px;
     font-family: 'Inter', sans-serif;
@@ -214,11 +209,4 @@ body {
     cursor: pointer;
 }
 
-/*.ui-icon-closethick.ui-icon {*/
-/*    background-image: url("../assets/close.png");*/
-/*}*/
-
-/*.ui-icon-closethick {*/
-/*    background-position: -2.5px;*/
-/*}*/
 
