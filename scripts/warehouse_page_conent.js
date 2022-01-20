@@ -462,6 +462,12 @@ $(() => {
                 warehouse_page = $("#warehouse_page"),
                 body = $("body");
 
+            function local_storage_existance () {
+                if (localStorage.getItem(wh_name) === null || localStorage.getItem(wh_name) === "undefined") {
+                    localStorage.setItem(wh_name, JSON.stringify([]));
+                }
+            }
+
             all_checks.click(function () {
                 if ($(this).attr("src") === "../assets/check.svg") {
                     change_attribute($(this), "src", "../assets/Rectangle%201384.svg");
@@ -490,13 +496,15 @@ $(() => {
                             update_down_bar()
                         } else {
                             close_down_bar();
-                            all_checks.attr("src", "../assets/Rectangle%201384.svg");
+
                         }
+                        all_checks.attr("src", "../assets/Rectangle%201384.svg");
                     } else {
                         change_attribute($(event.target), "src", "../assets/check.svg");
                         set_one_checked($(event.target), true);
                         let quntity = how_many_checked();
-                        update_down_bar()
+                        update_down_bar();
+                        console.log(quntity);
                         if (quntity.num === quntity.all) {
                             all_checks.attr("src", "../assets/check.svg");
                         }
@@ -563,11 +571,14 @@ $(() => {
             }
 
             function set_all_checked (list, state) {
-                // console.log("here", state);
-                list.forEach(obj => {
-                    obj.checked = state;
-                });
-                return list;
+                try {
+                    list.forEach(obj => {
+                        obj.checked = state;
+                    });
+                    return list;
+                } catch (e) {
+                    console.log(e)
+                }
             }
 
             function set_one_checked (item, state) {
@@ -847,6 +858,7 @@ $(() => {
             }
 
             function update_product_storage (item) {
+                console.log(wh_name);
                 if (JSON.parse(localStorage.getItem(wh_name)) !== null) {
                     let current_list = JSON.parse(localStorage.getItem(wh_name));
                     let updated_list = add_new_product(
@@ -950,6 +962,7 @@ $(() => {
             //     purch: "purch",
             //     ship: "shipment",
             // });
+            local_storage_existance();
             close_down_bar();
             localStorage.setItem(wh_name, JSON.stringify(set_all_checked(JSON.parse(localStorage.getItem(wh_name)), false)))
             create_product_table(wh_name);
@@ -959,9 +972,166 @@ $(() => {
                 const selected = $("#selected"),
                     move_btn = $("#move_button"),
                     moving_steps = $("#moving_steps"),
-                    delete_button = $("#delete_button");
+                    delete_button = $("#delete_button"),
+                    input_from = $("#input_from"),
+                    second_moving_step = $("#second_step_for_moving"),
+                    third_moving_step = $("#third_step_for_moving"),
+                    first_moving_step = $("#first_moving_step"),
+                    shipment_by_plane_for_moving = $("#shipment_by_plane_for_moving"),
+                    shipment_by_sea_for_moving =$("#shipment_by_sea_for_moving"),
+                    shipment_by_car_for_moving = $("#shipment_by_car_for_moving"),
+                    payment_by_card_for_moving = $("#payment_by_card_for_moving"),
+                    payment_by_paypal_for_moving = $("#payment_by_paypal_for_moving"),
+                    payment_in_cash_for_moving = $("#payment_in_cash_for_moving"),
+                    way_to_pay = {card: false, paypal: false, cash: false},
+                    way_to_ship = {plane: false, sea: false, car: false},
+                    all_ship_btn_for_moving = $([])
+                        .add(shipment_by_plane_for_moving)
+                        .add(shipment_by_sea_for_moving)
+                        .add(shipment_by_car_for_moving),
+                    all_pay_btn_for_moving = $([])
+                        .add(payment_by_card_for_moving)
+                        .add(payment_by_paypal_for_moving)
+                        .add(payment_in_cash_for_moving),
+                    list_of_moving = "list of moving products",
+                    place_to_move = "place to move",
+                    combo = $("#combobox"),
+                    finish_moving_cargo_btn = $("#finish_moving_cargo");
 
-                moving_steps.tabs();
+                $.widget( "custom.combobox", {
+                    _create: function() {
+                        this.wrapper = $( "<div id='combo'>" )
+                            .addClass( "custom-combobox custom_combobox_size" )
+                            .insertAfter( this.element );
+
+                        this.element.hide();
+                        this._createAutocomplete();
+                        this._createShowAllButton();
+                    },
+
+                    _createAutocomplete: function() {
+                        var selected = this.element.children( ":selected" ),
+                            value = selected.val() ? selected.text() : "";
+
+                        this.input = $( "<input id='combo_input'>" )
+                            .appendTo( this.wrapper )
+                            .val( value )
+                            .attr( "placeholder", "Select a warehouse" )
+                            .addClass( "select_input custom-combobox-input ui-corner-left" )
+                            .autocomplete({
+                                delay: 0,
+                                minLength: 0,
+                                source: this._source.bind( this )
+                            })
+                            .tooltip({
+                                classes: {
+                                    "ui-tooltip": "ui-state-highlight"
+                                }
+                            });
+
+                        this._on( this.input, {
+                            autocompleteselect: function( event, ui ) {
+                                ui.item.option.selected = true;
+                                this._trigger( "select", event, {
+                                    item: ui.item.option
+                                });
+                            },
+
+                            autocompletechange: "_removeIfInvalid"
+                        });
+                    },
+
+                    _createShowAllButton: function() {
+                        var input = this.input,
+                            wasOpen = false;
+
+                        $( "<a>" )
+                            .attr( "tabIndex", -1 )
+                            .tooltip()
+                            .appendTo( this.wrapper )
+                            .button({
+                                icons: {
+                                    primary: "ui-icon-triangle-1-s"
+                                },
+                                text: false
+                            })
+                            .removeClass( "ui-corner-all ui-button" )
+                            .addClass( "select_button custom-combobox-toggle ui-corner-right" )
+                            .on( "mousedown", function() {
+                                wasOpen = input.autocomplete( "widget" ).is( ":visible" );
+                            })
+                            .on( "click", function() {
+                                input.trigger( "focus" );
+
+                                // Close if already visible
+                                if ( wasOpen ) {
+                                    return;
+                                }
+
+                                // Pass empty string as value to search for, displaying all results
+                                input.autocomplete( "search", "" );
+                            });
+                    },
+
+                    _source: function( request, response ) {
+                        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+                        response( this.element.children( "option" ).map(function() {
+                            var text = $( this ).text();
+                            if ( this.value && ( !request.term || matcher.test(text) ) )
+                                return {
+                                    label: text,
+                                    value: text,
+                                    option: this
+                                };
+                        }) );
+                    },
+
+                    _removeIfInvalid: function( event, ui ) {
+
+                        // Selected an item, nothing to do
+                        if ( ui.item ) {
+                            return;
+                        }
+
+                        // Search for a match (case-insensitive)
+                        var value = this.input.val(),
+                            valueLowerCase = value.toLowerCase(),
+                            valid = false;
+                        this.element.children( "option" ).each(function() {
+                            if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+                                this.selected = valid = true;
+                                return false;
+                            }
+                        });
+
+                        // Found a match, nothing to do
+                        if ( valid ) {
+                            return;
+                        }
+
+                        // Remove invalid value
+                        this.input
+                            .val( "" )
+                            .attr( "title", value + " didn't match any item" )
+                            .tooltip( "open" );
+                        this.element.val( "" );
+                        this._delay(function() {
+                            this.input.tooltip( "close" ).attr( "title", "" );
+                        }, 2500 );
+                        this.input.autocomplete( "instance" ).term = "";
+                    },
+
+                    _destroy: function() {
+                        this.wrapper.remove();
+                        this.element.show();
+                    }
+                });
+                combo.combobox();
+
+
+                moving_steps.tabs({
+                    disabled: [1, 2]
+                });
 
                 moving_cargo.dialog({
                     autoOpen: false,
@@ -970,8 +1140,146 @@ $(() => {
                     modal: true,
                     draggable: false,
                     resizable: false,
+                    close: function() {
+                        next_step(0, 2);
+                    }
+                });
+
+                finish_moving_cargo.dialog({
+                    autoOpen: false,
+                    width: 622,
+                    height: 638,
+                    modal: true,
+                    draggable: false,
+                    resizable: false,
                     close: function() {}
                 })
+
+                first_moving_step.click(function (event) {
+                    event.preventDefault();
+                    if (check_value_existance(combo)) {
+                        if (combo.val() !== input_from.val()) {
+                            localStorage.setItem(place_to_move, combo.val());
+                            next_step(1, 0);
+                        } else {
+                            $("#combo").addClass("ui-state-error");
+                            $("#combo_input").addClass("custom_error");
+                        }
+                    }
+
+                });
+
+                function check_value_existance (obj) {
+                    if (obj.val()) {
+                        return true
+                    } else {
+                        $("#combo").addClass("ui-state-error");
+                        $("#combo_input").addClass("custom_error");
+                        return false
+                    }
+                }
+
+                function create_option (wh) {
+                    return `
+                        <option value="${wh}" class="added_options">${wh}</option>
+                    `
+                }
+
+                function add_otpions () {
+                    const list = JSON.parse(localStorage.getItem(warehouse));
+                    list.forEach(it => {
+                        combo.append(create_option(it.name));
+                    });
+                }
+
+                second_moving_step.click(function (event) {
+                    event.preventDefault();
+                    if (way_to_ship.plane || way_to_ship.sea || way_to_ship.car) {
+                        let way = ''
+                        const current_list = JSON.parse(localStorage.getItem(list_of_moving));
+                        if (way_to_ship.plane) {
+                            way = "plane"
+                        }
+                        if (way_to_ship.sea) {
+                            way = "sea"
+                        }
+                        if (way_to_ship.car) {
+                            way = "car"
+                        }
+                        current_list.forEach(it => {
+                            it.ship = way
+                        });
+                        localStorage.setItem(list_of_moving, JSON.stringify(current_list));
+                        next_step(2, 1);
+                    }
+                });
+
+                shipment_by_plane_for_moving.click(function (event) {
+                    event.preventDefault();
+                    clear_buttons(all_ship_btn_for_moving);
+                    color_buttons($(this));
+                    set_way_to_ship(true, false, false);
+                });
+
+                shipment_by_sea_for_moving.click(function (event) {
+                    event.preventDefault();
+                    clear_buttons(all_ship_btn_for_moving);
+                    color_buttons($(this));
+                    set_way_to_ship(false, true, false);
+                });
+
+                shipment_by_car_for_moving.click(function (event) {
+                    event.preventDefault();
+                    clear_buttons(all_ship_btn_for_moving);
+                    color_buttons($(this));
+                    set_way_to_ship(false, false, true);
+                });
+
+                payment_by_card_for_moving.click(function (event) {
+                    event.preventDefault();
+                    clear_buttons(all_pay_btn_for_moving);
+                    color_buttons($(this));
+                    set_way_to_pay(true, false, false);
+                });
+
+                payment_by_paypal_for_moving.click(function (event) {
+                    event.preventDefault();
+                    clear_buttons(all_pay_btn_for_moving);
+                    color_buttons($(this));
+                    set_way_to_pay(false, true, false);
+                });
+
+                payment_in_cash_for_moving.click(function (event) {
+                    event.preventDefault();
+                    clear_buttons(all_pay_btn_for_moving);
+                    color_buttons($(this));
+                    set_way_to_pay(false, false, true);
+                });
+
+                third_moving_step.click(function (event) {
+                    event.preventDefault();
+                    finish_moving_cargo.dialog("open");
+                    moving_cargo.dialog("close");
+                    console.log(place_to_move)
+                    const list_from = JSON.parse(localStorage.getItem(list_of_moving)),
+                        list_in = JSON.parse(localStorage.getItem(localStorage.getItem(place_to_move)));
+                    console.log(list_in);
+                    list_from.forEach(it => {
+                        console.log(it);
+                        list_in.push(it);
+                    });
+                    console.log(list_in)
+                    localStorage.setItem(localStorage.getItem(place_to_move), JSON.stringify(list_in));
+                    deleting_data();
+                    close_down_bar();
+                    delete_table();
+                    create_product_table(wh_name);
+                });
+
+                finish_moving_cargo_btn.click(function (event) {
+                    event.preventDefault();
+                    finish_moving_cargo.dialog("close");
+                });
 
                 function count_all_selected () {
                     let list_of_all = JSON.parse(localStorage.getItem(wh_name));
@@ -985,18 +1293,52 @@ $(() => {
                 }
 
                 delete_button.click(function () {
+                    deleting_data();
+                    close_down_bar();
+                    delete_table();
+                    create_product_table(wh_name);
+                });
+
+                function deleting_data () {
                     let list_of_items = JSON.parse(localStorage.getItem(wh_name));
                     const new_list_of_items = list_of_items.filter((item) => !item.checked)
                     localStorage.setItem(wh_name, JSON.stringify(new_list_of_items));
                     all_checks.attr("src", "../assets/Rectangle%201384.svg");
-                    close_down_bar();
-                    delete_table();
-                    create_product_table(wh_name);
-                })
+                }
 
                 move_btn.click(function () {
-                    moving_cargo.dialog("open")
-                })
+                    set_from();
+                    moving_cargo.dialog("open");
+                    $(".added_options").remove()
+                    add_otpions();
+                    const list_of_items = JSON.parse(localStorage.getItem(wh_name)),
+                        new_list_of_items = list_of_items.filter((item) => item.checked);
+                    localStorage.setItem(list_of_moving, JSON.stringify(new_list_of_items));
+                });
+
+                function set_from () {
+                    input_from.val(wh_name);
+                    input_from.attr("readonly", "true");
+                }
+
+                function next_step (turn_on, turn_off) {
+                    moving_steps.tabs("enable", turn_on);
+                    moving_steps.tabs("option", "active", turn_on);
+                    moving_steps.tabs("disable", turn_off);
+                }
+
+                function set_way_to_ship (plane, sea, car) {
+                    way_to_ship.plane = plane;
+                    way_to_ship.sea = sea;
+                    way_to_ship.car = car;
+                }
+
+                function set_way_to_pay (card, paypal, cash) {
+                    way_to_pay.card = card;
+                    way_to_pay.paypal = paypal;
+                    way_to_pay.cash = cash;
+                }
+
                 count_all_selected();
             }
         }

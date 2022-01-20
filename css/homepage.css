@@ -132,7 +132,7 @@ body {
 
 .log_in_header {
     width: 100%;
-    margin: 30px auto;
+    margin: 29px auto;
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 36px;
@@ -209,11 +209,4 @@ body {
     cursor: pointer;
 }
 
-/*.ui-icon-closethick.ui-icon {*/
-/*    background-image: url("../assets/close.png");*/
-/*}*/
-
-/*.ui-icon-closethick {*/
-/*    background-position: -2.5px;*/
-/*}*/
 

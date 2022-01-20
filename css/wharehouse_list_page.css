@@ -240,8 +240,9 @@ th, td {
 }
 
 #ui-id-3, #ui-id-4,
-#ui-id-5, #ui-id-6, #ui-id-7,
-#ui-id-10, #ui-id-11, #ui-id-12 {
+#ui-id-5, #ui-id-6, #ui-id-7, #ui-id-8,
+#ui-id-9, #ui-id-10, #ui-id-11, #ui-id-12,
+#ui-id-13 {
     cursor: pointer;
     padding: 10px 12.6px;
     font-family: 'Inter', sans-serif;
@@ -255,7 +256,8 @@ th, td {
     padding: 0;
 }
 
-#first, #second, #third {
+#first, #second, #third,
+#first_for_moving, #second_for_moving, #third_for_moving {
     margin: 10px 8px 40px 8px;
     padding: 0;
     border: none;
@@ -429,4 +431,55 @@ th, td {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.select_input {
+    padding: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    border-radius: 3px;
+    border: none;
+}
+
+.select_input:focus {
+    outline: none;
+}
+
+.custom_combobox_size {
+    width: 298px;
+    border: 1px solid #E6E8EA;
+    border-radius: 3px;
+    margin: 8px auto;
+}
+
+.select_button {
+    padding: 0.4em 1em;
+    display: inline-block;
+    position: relative;
+    line-height: normal;
+    margin-right: 0.1em;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: visible;
+}
+
+.select_list {
+    border: 1px solid #E6E8EA;
+    border-radius: 3px;
+    margin-top: 8px;
+    width: 298px;
+    height: 160px;
+    overflow-y: scroll;
+}
+
+.custom_error {
+    background: #fddfdf;
+    color: #5f3f3f;
 }

@@ -297,7 +297,7 @@
         <div id="tabs-2">
             <div class="auth_form">
                 <form>
-                    <div  class="label_payment_method"><label>Choose a payment method</label></div>
+                    <div  class="label_payment_method"><label class="label_form">Choose delivery method</label></div>
                     <div class="auth_button">
                         <button class="payment_button" id="shipment_by_plane">
                             <svg width="300" height="60" viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -360,7 +360,7 @@
         <div id="tabs-3">
             <div class="auth_form">
                 <form>
-                    <div  class="label_payment_method"><label>Choose a payment method</label></div>
+                    <div  class="label_payment_method"><label class="label_form">Choose a payment method</label></div>
                     <div class="auth_button">
                         <button class="payment_button" id="payment_by_card">
                             <svg width="300" height="60" viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -437,11 +437,11 @@
     <div id="moving_steps">
         <ul>
             <li class="line"><div class="line_between_tabs"></div></li>
-            <li id="first_for_moving"><a href="#tabs-1">1</a></li>
+            <li id="first_for_moving"><a href="#tab_one">1</a></li>
             <li class="line"><div class="line_between_tabs"></div></li>
-            <li id="second_for_moving"><a href="#tabs-2">2</a></li>
+            <li id="second_for_moving"><a href="#tab_two">2</a></li>
             <li class="line"><div class="line_between_tabs"></div></li>
-            <li id="third_for_moving"><a href="#tabs-3">3</a></li>
+            <li id="third_for_moving"><a href="#tab_three">3</a></li>
             <li class="line"><div class="line_between_tabs"></div></li>
         </ul>
         <div id="tab_one">
@@ -463,19 +463,15 @@
                             <path d="M19 10.75L1 10.75M19 10.75L16.4219 8.5M19 10.75L16.4219 13" stroke="#3E4C59" stroke-width="1.2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <div class="input_block">
-                        <label for="input_in" class="label_form">In</label> <br>
-                        <input
-                                type="text"
-                                class="input_form modal_inputs"
-                                name="email"
-                                id="input_in"
-                                placeholder="Enter a number"
-                        >
+                    <div class="ui-widget">
+                        <label for="combobox" class="label_form">In</label> <br>
+                        <select id="combobox" class="select_list">
+                            <option value>Empty</option>
+                        </select>
                     </div>
 
                     <div class="auth_button">
-                        <button class="common_button log_in_btn" id="first_moving_step_for_moving">Next step</button>
+                        <button class="common_button log_in_btn" id="first_moving_step">Next step</button>
                     </div>
                     <!-- Allow form submission with keyboard without duplicating the dialog button -->
                     <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
@@ -485,7 +481,7 @@
         <div id="tab_two">
             <div class="auth_form">
                 <form>
-                    <div  class="label_payment_method"><label>Choose a payment method</label></div>
+                    <div  class="label_payment_method"><label class="label_form">Choose delivery method</label></div>
                     <div class="auth_button">
                         <button class="payment_button" id="shipment_by_plane_for_moving">
                             <svg width="300" height="60" viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -548,7 +544,7 @@
         <div id="tab_three">
             <div class="auth_form">
                 <form>
-                    <div  class="label_payment_method"><label>Choose a payment method</label></div>
+                    <div  class="label_payment_method"><label class="label_form">Choose a payment method</label></div>
                     <div class="auth_button">
                         <button class="payment_button" id="payment_by_card_for_moving">
                             <svg width="300" height="60" viewBox="0 0 300 60" fill="none" xmlns="http://www.w3.org/2000/svg">
