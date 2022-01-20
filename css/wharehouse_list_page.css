@@ -1,6 +1,6 @@
 /* left bar */
 .left_bar {
-    height: 100vh;
+    height: 100%;
     width: 18%;
     border-right: 1px solid #ECEFF2;
 }
@@ -150,7 +150,7 @@ h1 {
 
 .warehouses_list {
     margin-top: 32px;
-    height: 88%;
+    height: 85%;
     width: 100%;
     overflow-y: scroll;
 }
@@ -176,14 +176,12 @@ h1 {
 tr {
     border-bottom: 1px solid #ECEFF2;
 }
-th:first-child {
+th:first-child, td:first-child {
     width: 20px;
     padding-right: 0;
+    cursor: pointer;
 }
-td:first-child {
-    width: 20px;
-    padding-right: 0;
-}
+
 th, td {
     font-weight: 400;
     padding: 24px;
@@ -194,7 +192,8 @@ th, td {
     outline: none;
 }
 
-#login_header {
+#login_header,
+#cargo_success_header {
     width: 370px;
 }
 
@@ -227,7 +226,8 @@ th, td {
     opacity: 1.0;
 }
 
-#steps_cargo_adding {
+#steps_cargo_adding,
+#moving_steps {
     border: none;
 }
 
@@ -239,7 +239,9 @@ th, td {
     justify-content: center;
 }
 
-#ui-id-3, #ui-id-4, #ui-id-5 {
+#ui-id-3, #ui-id-4,
+#ui-id-5, #ui-id-6, #ui-id-7,
+#ui-id-10, #ui-id-11, #ui-id-12 {
     cursor: pointer;
     padding: 10px 12.6px;
     font-family: 'Inter', sans-serif;
@@ -258,6 +260,7 @@ th, td {
     padding: 0;
     border: none;
     border-radius: 16px;
+    background-color: transparent;
 }
 
 .line {
@@ -278,14 +281,7 @@ th, td {
 .radio_buttons {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-}
-
-label {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 14px;
+    margin-top: 24px;
 }
 
 .label_payment_method {
@@ -300,4 +296,137 @@ label {
     margin: 12px auto;
     border: none;
     cursor: pointer;
+}
+
+.choosing_type {
+    fill-opacity: 1.0;
+    fill: #EE950F;
+}
+
+.choosing_bg {
+    fill: #FEF5E7;
+}
+
+/* для элемента input c type="radio" */
+.custom-radio {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+/* для элемента label связанного с .custom-radio */
+.custom-radio+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+/* создание в label псевдоэлемента  before со следующими стилями */
+.custom-radio+label::after {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    margin-right: 24px;
+    margin-left: 8px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
+
+/* стили при наведении курсора на радио */
+.custom-radio:not(:disabled):not(:checked)+label:hover::after {
+    border-color: #b3d7ff;
+}
+
+/* стили для активной радиокнопки (при нажатии на неё) */
+.custom-radio:not(:disabled):active+label::after {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+}
+
+
+
+/* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+.custom-radio:focus:not(:checked)+label::after {
+    border-color: #80bdff;
+}
+
+/* стили для радиокнопки, находящейся в состоянии checked */
+.custom-radio:checked+label::after {
+    border: 1px solid #E6E8EA;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23EE950F'/%3e%3c/svg%3e");
+}
+
+/* стили для радиокнопки, находящейся в состоянии disabled */
+.custom-radio:disabled+label::after {
+    background-color: #e9ecef;
+}
+
+.label_for_radio {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.down_bar {
+    width: 100%;
+    height: 12%;
+    box-shadow: 0 -1px 15px rgba(62, 76, 89, 0.04);
+}
+
+.down_bar_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 24px 32px;
+
+}
+
+.move_button {
+    padding: 16px 24px;
+    margin-left: 16px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.delete_button {
+    border: 1px solid #E65232;
+    background-color: transparent;
+    color: #E55232;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 15px 23px;
+    border-radius: 3px;
+}
+.information {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.selected {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 14px;
+    color: #3E4C59;
+    margin-left: 8px;
+}
+
+.strokes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
